@@ -11,7 +11,7 @@ const{registerController} = require("../controllers/registerController");
 app.get("/basket",getBasket);
 app.post("/basket",addBasket);
 
-app.get("/categories",getCategories);
+app.get("/category",getCategories);
 
 app.get("/fav",getFav);
 app.post("/fav",addFav);

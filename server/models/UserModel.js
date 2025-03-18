@@ -5,6 +5,7 @@ const LastViewedModel= require("./LastViewedModel");
 
 const UserModel = mongoose.Schema({
      username:{tpye:String , required:true},
+     email:{type:String,required:true},
      password : {type:String, required:true},
      basket : [{type: mongoose.Schema.ObjectId , ref:"BasketModel"}],
      fav: [{type:mongoose.Schema.ObjectId , ref:"FavModel"}],
