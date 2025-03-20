@@ -6,18 +6,15 @@ const bodyparser = require("body-parser");
 const apiRoutes= require("./routes/apiRoutes");
 
 const app = express();
+
 dotenv.config();
 app.use(cors());
-app.use(bodyparser.json());
+app.use(express.json({limit: '10mb'}));
 
-const router = express.Router();
 
-app.router("/server",apiRoutes);
+app.use("/",apiRoutes);
 
-mongoose.connect(process.env.MONGO_URI ,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(console.log("mongodb bağlantısı başarılı")).catch(console.log("mongodb bağlantı hatası"));
+mongoose.connect(process.env.MONGO_URI).then(()=>console.log("mongodb bağlantısı başarılı")).catch((err)=>console.log("mongodb bağlantı hatası",err));
 
 app.listen(process.env.PORT , ()=>{
     console.log("server is running on "+process.env.PORT );

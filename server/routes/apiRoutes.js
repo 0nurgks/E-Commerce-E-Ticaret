@@ -1,31 +1,34 @@
 const express = require("express");
-const app = express();
+const router = express.Router();
 const {getBasket,addBasket} = require("../controllers/basketController");
-const {getCategories} = require("../controllers/categoryController");
+const {getCategories,addCategory, deleteCategory} = require("../controllers/categoryController");
 const {getFav,addFav} =  require("../controllers/favController");
 const {getLastViewed} = require("../controllers/lastViewedController");
 const {loginController} = require("../controllers/loginController");
 const {getMessage,addMessage} = require("../controllers/messageController");
 const{registerController} = require("../controllers/registerController");
 
-app.get("/basket",getBasket);
-app.post("/basket",addBasket);
+router.get("/basket",getBasket);
+router.post("/basket",addBasket);
 
-app.get("/category",getCategories);
-
-app.get("/fav",getFav);
-app.post("/fav",addFav);
-
-
-app.get("/lastViewed",getLastViewed);
-
-app.post("/login",loginController);
+router.get("/category",getCategories);
+router.post("/category",addCategory);
+router.delete("/category",deleteCategory);
 
 
-app.get("/message",getMessage);
-app.post("message",addMessage);
+router.get("/fav",getFav);
+router.post("/fav",addFav);
 
-app.post("/register",registerController);
+
+router.get("/lastViewed",getLastViewed);
+
+router.post("/login",loginController);
+
+
+router.get("/message",getMessage);
+router.post("message",addMessage);
+
+router.post("/register",registerController);
 
 module.exports = router;
 

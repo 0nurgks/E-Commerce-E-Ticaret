@@ -1,49 +1,27 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-import CardActionArea from '@mui/material/CardActionArea';
 
-
-
-function Message({title,description}) {
-  const [selectedCard, setSelectedCard] = React.useState(0);
+export default function Message({title,description}) {
   return (
-    <Box
-      sx={{
-        width: '100%',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(min(200px, 100%), 1fr))',
-        gap: 2,
-      }}
-    >
-        <Card>
-          <CardActionArea
-            onClick={() => setSelectedCard(index)}
-            data-active={selectedCard === index ? '' : undefined}
-            sx={{
-              height: '100%',
-              '&[data-active]': {
-                backgroundColor: 'action.selected',
-                '&:hover': {
-                  backgroundColor: 'action.selectedHover',
-                },
-              },
-            }}
-          >
-            <CardContent sx={{ height: '100%' }}>
-              <Typography variant="h5" component="div">
-                {card.title}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {card.description}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-    </Box>
+    <div>
+      <Accordion>
+        <AccordionSummary
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
+          <Typography component="span">{title}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+           {description}
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      
+          
+    </div>
   );
 }
-
-export default Message;

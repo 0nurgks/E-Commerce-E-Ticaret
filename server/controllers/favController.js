@@ -1,4 +1,5 @@
 const FavModel = require("../models/FavModel");
+const ProductModel = require("../models/ProductModel");
 
 
 module.exports.getFav=async(req,res)=>{
@@ -21,8 +22,8 @@ try {
     const userID = req.userID;
 const product = req.body.product;
 if(!userID||!product){return res.status(404).json({message:"istek alınamadı"});}
-
-await FavModel.create({user:userID, product:product});
+const productName = await ProductModel.find({name:product})
+await FavModel.create({user:userID, product:productName});
 res.status(202).json({message:"Ürün favorilere eklendi"});
 
 

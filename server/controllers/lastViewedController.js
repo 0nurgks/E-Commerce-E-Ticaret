@@ -21,4 +21,3 @@ module.exports.getLastViewed = async (req, res) => {
     }
 };
 
-}

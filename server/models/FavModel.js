@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const UserModel = require("./UserModel");
 const ProductModel = require("./ProductModel");
 
-const Fav = mongoose.Schema({
+const Fav = new mongoose.Schema({
     user:{type:mongoose.Schema.ObjectId, ref:"UserModel"},
     product:[{type:mongoose.Schema.ObjectId, ref:"ProductModel"}]
 });

@@ -1,4 +1,5 @@
 const BasketModel = require("../models/BasketModel");
+const ProductModel = require("../models/ProductModel");
 
 
 module.exports.getBasket=async(req,res)=>{
@@ -20,8 +21,8 @@ try {
     const userID = req.userID;
 const product = req.product;
 if(!user||!product){return res.status(404).json({message:"istek alınamadı"});}
-
-await BasketModel.create({user:userID, product:product});
+const productName = await ProductModel.find({name:product})
+await BasketModel.create({user:userID, product:productName});
 res.status(202).json({message:"Ürün sepete eklendi"});
 
 

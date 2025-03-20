@@ -26,10 +26,11 @@ try {
     const username = user.username;
 
     if(!username){return res.status(404).json({message:"istek alınamadı"});}
-   const messageExist= MessageModel.find({username:username});
+   const messageSended= MessageModel.find({username:username});
 
-   if(!messageExist){return res.status(404).json({message:"Mesaj bulunamadı"});}
-   res.status(200).json({message:"mesajlar alındı"},messageExist);
+   const messageReceived = MessageModel.find({receiver:username});
+   if(!messageExist||!messageReceived){return res.status(404).json({message:"Mesaj bulunamadı"});}
+   res.status(200).json({message:"mesajlar alındı"},messageSended,messageReceived);
 } catch (error) {
     res.status(500).json({message:"connection error on server"});
 }

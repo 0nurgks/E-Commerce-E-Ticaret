@@ -10,3 +10,4 @@ const LastViewed = mongoose.Schema({
 });
 
 module.exports = mongoose.model("LastViewedModel",LastViewed,"lastViews");
+*/

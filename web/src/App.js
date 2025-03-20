@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import Container from "./pages/admin/Container.jsx";
 import AdminMessage from "./pages/admin/AdminMessage.jsx";
+import AdminProduct from "./pages/admin/AdminProduct.jsx";
+import AdminCategory from "./pages/admin/AdminCategory.jsx";
 
 const TokenRoute = ()=>{
   const nav = useNavigate();
@@ -33,6 +35,9 @@ function App() {
       <Route path="/Register" element={<Register/>} />
       <Route path="/admin" element={<Container/>} />
       <Route path="/admin/message" element={<AdminMessage/>} />
+      <Route path="/admin/product" element={<AdminProduct/>} />
+      <Route path="/admin/category" element={<AdminCategory/>} />
+
 
     </Routes>
   </BrowserRouter>

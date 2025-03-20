@@ -3,18 +3,12 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const generateAccessToken = require("../tokens/generateAccessToken");
 const generateRefreshToken = require("../tokens/generateRefreshToken");
-const UserModel = require("../models/UserModel");
+
 
 module.exports.loginController=async(req,res)=>{
 try {
-
-    const {password} = request.body;
-    const {userID} = req.userID;
-
-   
-   
-
-    const userExist = await UserModel.findOneById({userID});
+    const {username,password} = request.body;
+    const userExist = await UserModel.findOne({username});
     if(!userExist){
         res.status(404).json({message:"User not found"});
     }
