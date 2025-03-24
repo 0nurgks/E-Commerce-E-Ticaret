@@ -12,6 +12,7 @@ const AdminProduct = () => {
   
 
   const [name,setName] = useState();
+  const [header,setHeader] = useState();
   const [categories,setCategories] = useState([]);
   const [image,setImage] = useState();
   const [price,setPrice] = useState();
@@ -31,11 +32,13 @@ const AdminProduct = () => {
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
-    await fetch(productLink,{
+   const response = await fetch(productLink,{
       method:"POST",
       headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({name,image,price,description,selectedCategory,piece})
-    }).then((response)=>response.json()).then((response)=> response.ok?alert("Ürün Kaydedildi"):alert("Ürün Kaydedilemedi")).catch(console.log("fetch başarısız"))
+      body:JSON.stringify({name,header,image,price,description,category:selectedCategory,piece})
+    });
+    const data = await response.json();
+    response.ok?alert("ürün kaydedildi"):alert("ürün kaydedilemedi");
     
   }
 
@@ -57,6 +60,8 @@ const AdminProduct = () => {
       <div className='flex flex-1 '>
       <form method="submit" onSubmit={(e)=>handleSubmit(e)} className='flex flex-1 flex-col justify-center items-center '>
       <input type="text" placeholder='Ürün adı' onChange={(e)=>setName(e.target.value)} className='my-3'/>
+      <input type="text" placeholder='Ürün Başlığı' onChange={(e)=>setHeader(e.target.value)} className='my-3'/>
+
      <div className='my-3'>
      <p>Görsel Seç</p>
      <input type="file" accept="image/*" onChange={(e)=>handleImageChange(e)} />

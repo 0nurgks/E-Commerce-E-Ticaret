@@ -9,6 +9,8 @@ const Container = () => {
       <button onClick={()=>nav("/admin/message")} className='my-1'>Mesajlarım</button>
       <button onClick={()=>nav("/admin/product")} className='my-1'>Ürün Ekle</button>
       <button onClick={()=>nav("/admin/category")} className='my-1'>Kategoriler</button>
+      <button onClick={()=>nav("/admin/myproducts")} className='my-1'>Ürünler</button>
+
     </div>
   )
 }

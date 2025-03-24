@@ -1,6 +1,6 @@
 import React from 'react'
 import {categoryLink,productLink} from "../utils";
-import ProductCard from '../components/ProductCard';
+import ProductSlider from '../components/ProductSlider';
 
 const CategoryPage = async() => {
 
@@ -22,7 +22,7 @@ const CategoryPage = async() => {
   return (
     <div>
       {categories.map((key,index)=>{
-       <ProductCard/>
+       <ProductSlider/>
       })}
     </div>
   )

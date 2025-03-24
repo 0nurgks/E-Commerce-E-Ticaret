@@ -6,25 +6,25 @@ const CategoryModel = require("../models/CategoryModel");
 module.exports.addProduct = async(req,res)=>{
 try {
     
-    const [image,price,description,category,piece] = req.body;
-    const categoryName = await CategoryModel.find({name:category});
+    const {name,header,image,price,description,category,piece} = req.body;
+    const categoryExist = await CategoryModel.findOne({name:category});
 
-if(req.body.lenght==0){return res.status(404).json({message:"istek alınamadı"})}
-if(!categoryName){return res.status(404).json({message:"Kategori bulunamadı"})}
+if(!categoryExist){return res.status(404).json({message:"Kategori bulunamadı"})}
 
-const productExist = await ProductModel.create({image:image,price:price,description:description,category:categoryName});
+const productExist = await ProductModel.create({name:name,header:header,image:image,price:price,description:description,category:categoryExist._id,piece:piece});
 
     if(!productExist){return res.status(400).json({message:"Ürün kaydedilemedi"})}
-    return res.status(202).json({message:"Ürün Kaydedildi"})
+    return res.status(202).json({message:"Ürün Kaydedildi"});
+
 } catch (error) {
     res.status(500).json({message:"connection error on server"});
 }
 
 }
 
-module.exports.getAllProduct = async(req,res)=>{
+module.exports.getAllProducts = async(req,res)=>{
     try {
-        const products = ProductModel.find();
+        const products = await ProductModel.find();
         if(!products){return res.status(404).json({message:"Ürün Yok"});}
         return res.status(200).json({message:"ürünler",products});
     } catch (error) {
@@ -33,6 +33,18 @@ module.exports.getAllProduct = async(req,res)=>{
 }
 
 
+module.exports.deleteProduct=async(req,res)=>{
+    try {
+        const {id} = req.body;
+        if(!id){return res.status(404).json({message:"istek alınamadı"});}
+        await ProductModel.findOneAndDelete({_id:id});
+        res.status(200).json({message:"Eleman silindi"});
+
+    } catch (error) {
+        res.status(500).json({message:"connection error on server"});
+
+    }
+}
 
 module.exports.addCommentToProduct=async(req,res)=>{
 

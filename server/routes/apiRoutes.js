@@ -7,7 +7,7 @@ const {getLastViewed} = require("../controllers/lastViewedController");
 const {loginController} = require("../controllers/loginController");
 const {getMessage,addMessage} = require("../controllers/messageController");
 const{registerController} = require("../controllers/registerController");
-
+const {addProduct,getAllProducts,deleteProduct} = require("../controllers/productController");
 router.get("/basket",getBasket);
 router.post("/basket",addBasket);
 
@@ -29,6 +29,10 @@ router.get("/message",getMessage);
 router.post("message",addMessage);
 
 router.post("/register",registerController);
+
+router.post("/product",addProduct);
+router.get("/product",getAllProducts);
+router.delete("/product",deleteProduct);
 
 module.exports = router;
 
