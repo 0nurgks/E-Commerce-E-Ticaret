@@ -49,4 +49,48 @@ module.exports.deleteProduct=async(req,res)=>{
 module.exports.addCommentToProduct=async(req,res)=>{
 
 }
-module.exports.getProductByCategory=async(req,res)=>{}
+module.exports.getProductByCategory=async(req,res)=>{
+    try {
+        const {query} = req.query;
+        if(!query){return  res.status(400).json({message:"query alınamadı"})}
+            const category = await CategoryModel.findOne({name:query});
+            if(!category){return res.status(404).json({message:"istek alınamadı"});}
+            const products =   await ProductModel.find({category:category._id});
+            if(!products){return res.status(404).json({message:"Ürünler bulunamadı"});}
+            res.status(200).json({message:"Ürünler bulundu",products});
+
+    } catch (error) {
+        res.status(500).json({message:"connection error on server"});
+
+    }
+        
+}
+
+
+
+module.exports.getProductById = async (req, res) => {
+  try {
+    const { query } = req.query;
+
+    // Geçerli bir ObjectId olup olmadığını kontrol et
+    if (!mongoose.Types.ObjectId.isValid(query)) {
+      return res.status(400).json({ message: "invalid id format" });
+    }
+
+    // ID'yi ObjectId'ye dönüştür
+    const productId = new mongoose.Types.ObjectId(query);
+
+    // MongoDB sorgusu
+    const obj = await ProductModel.findOne({ _id: productId });
+
+    if (!obj) {
+      return res.status(404).json({ message: "product not found" });
+    }
+
+    res.status(200).json({ obj });
+
+  } catch (error) {
+    console.error("Hata:", error);
+    res.status(500).json({ message: "server error", error: error.message });
+  }
+};

@@ -1,37 +1,31 @@
 import React from 'react'
-import Dropdown from 'react-bootstrap/Dropdown';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import {useCategory} from "../fetch/CategoryFetch"
+import { useNavigate } from 'react-router-dom';
+import { setClicked } from '../redux/clickedSlice.ts';
 const CategoryTab = () => {
+  useCategory();
+    const categories = useSelector((state)=> state.category.value)
+    const nav = useNavigate();
+    const dispatch= useDispatch();
   return (
-
-
-    <div className='flex flex-row justify-start align-center '>
+    <div className='flex  flex-row justify-start align-center  '>
+        {categories.map((obj,index)=>(
+            <div key={index} className='mx-5'>
+                      <button></button>
+                    <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <a href="" onClick={()=>(nav('/search?query='+obj.name)&&dispatch(setClicked(0)))} className='!no-underline ! !text-black w-md h-md'>{obj.name}</a>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    </div>
+          
+        ))}
         
-        <Dropdown className='flex align-self-center'>
-      <Dropdown.Toggle variant="success" id="dropdown-basic" className="flex !bg-transparent !border-none !text-red-500 !opacity-50 !h-5 !py-0 !my-0 !mx-0 !text-nowrap ">
-       Tüm Kategoriler
-      </Dropdown.Toggle>
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-    
-      <Navbar bg="light" data-bs-theme="light">
-        <Container>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
    
     </div>
   )

@@ -4,10 +4,14 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProductCard({image,header,text}) {
+  const navigate = useNavigate();
   return (
-    <Card sx={{ maxWidth: 345 }}>
+  <div>
+    <Card sx={{ maxWidth: 345 }}  >
       <CardActionArea>
         <CardMedia
           component={image}
@@ -16,7 +20,7 @@ export default function ProductCard({image,header,text}) {
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" >
           {header}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -25,5 +29,6 @@ export default function ProductCard({image,header,text}) {
         </CardContent>
       </CardActionArea>
     </Card>
+    </div>
   );
 }

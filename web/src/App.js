@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router";
-import BottomNav from "./pages/BottomNav.jsx";
 import HomeContainer from "./pages/containers/HomeContainer.jsx";
 import CategoryPage from "./pages/CategoryPage.jsx";
 import Login from "./pages/auth/Login.jsx";
@@ -12,7 +11,7 @@ import AdminProduct from "./pages/admin/AdminProduct.jsx";
 import AdminCategory from "./pages/admin/AdminCategory.jsx";
 import AdminMyProducts from "./pages/admin/AdminMyProducts.jsx";
 import SearchLayout from "./pages/search/SearchLayout.jsx";
-
+import{Layout as Product_Layout} from "./pages/card/Layout.jsx";
 
 const TokenRoute = ()=>{
   const nav = useNavigate();
@@ -42,7 +41,8 @@ function App() {
       <Route path="/admin/product" element={<AdminProduct/>} />
       <Route path="/admin/category" element={<AdminCategory/>} />
       <Route path="/admin/myproducts" element={<AdminMyProducts/>} />
-      
+      <Route path="/product" element={<Product_Layout/>} />
+
 
 
 
