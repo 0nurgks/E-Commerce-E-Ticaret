@@ -15,8 +15,8 @@ function TopNav() {
         <Nav.Link href="#pricing">Hakkımızda</Nav.Link>
       </Nav>
       <Nav className="me-auto justify-end">
-        <Nav.Link href="/">Favoriler</Nav.Link>
-        <Nav.Link href="/">Sepet</Nav.Link>
+        <Nav.Link href="/fav">Favoriler</Nav.Link>
+        <Nav.Link href="/basket">Sepet</Nav.Link>
       </Nav>
     </Container>
   </Navbar>

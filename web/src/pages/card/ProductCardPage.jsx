@@ -1,5 +1,6 @@
 import React from 'react'
-
+import { AddBasket } from '../../fetch/BasketFetch';
+import { AddFav } from '../../fetch/FavFetch';
 const ProductCardPage = ({product}) => {
   return (
     <div className="min-h-screen bg-white p-6 md:p-12">
@@ -33,8 +34,13 @@ const ProductCardPage = ({product}) => {
     {product.piece > 0 ? `Stokta ${product.piece} adet var` : "Stokta yok"}
   </div>
   <div className="text-2xl font-bold text-green-600">{product.price} ₺</div>
-  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg py-3 rounded-xl transition">
+  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg py-3 rounded-xl transition"
+  onClick={()=>AddBasket(product._id)}>
     Sepete Ekle
+  </button>
+  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg py-3 rounded-xl transition"
+  onClick={()=>AddFav(product._id)}>
+    Favorilere Ekle
   </button>
 </div>
 

@@ -4,17 +4,17 @@ const initialState={
     value: []
 }
 
-const basketSlice = createSlice({
-    name:"basket",
+const favSlice = createSlice({
+    name:"fav",
     initialState,
     reducers:{
-        setBasket : (state,action) =>{
+        setFav : (state,action) =>{
             state.value = action.payload
         },
         
     }
 });
 
-export const {setBasket} = basketSlice.actions;
-export default basketSlice.reducer;
+export const {setFav} = favSlice.actions;
+export default favSlice.reducer;
 

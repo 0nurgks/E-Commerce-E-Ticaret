@@ -24,9 +24,9 @@ const Register = () => {
    <div className='flex flex-1 items-center justify-center'>
     <form onSubmit={(e)=>handleSubmit(e)} className="flex flex-col">
       <p>Demo Ticaret</p>
-      <input type="text" onClick={(e)=>setUsername(e)} placeholder='Username'/>
-      <input type="text" onClick={(e)=>setEmail(e)} placeholder='E-mail'/>
-      <input type="text" onClick={(e)=>setPassword(e)}placeholder='Password'/>
+      <input type="text" onChange={(e)=>setUsername(e.target.value)} placeholder='Username'/>
+      <input type="text" onChange={(e)=>setEmail(e.target.value)} placeholder='E-mail'/>
+      <input type="text" onChange={(e)=>setPassword(e.target.value)}placeholder='Password'/>
       <div className='flex flex-row my-2 '>
       <button type='submit' className='flex mx-2'>Kayıt Ol</button>
       <button onClick={()=>nav("/login")}>Giriş Yap</button>

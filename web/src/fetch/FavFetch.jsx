@@ -1,14 +1,14 @@
 import { useEffect } from "react";
-import { addBasketLink } from "../utils";
+import { FavLink } from "../utils";
 import { useDispatch, useSelector } from "react-redux";
-import { setBasket } from "../redux/basketSlice.ts";
+import { setFav } from "../redux/favSlice.ts";
 
-export const useGetBasket = () =>{
+export const useGetFav = () =>{
     const dispatch = useDispatch();
     
     useEffect(() => {
         const accessToken = localStorage.getItem("accessToken");
-        fetch(addBasketLink, {
+        fetch(FavLink, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -16,15 +16,15 @@ export const useGetBasket = () =>{
           }
         })
           .then((res) => res.json())
-          .then((data) => dispatch(setBasket(data.basket)));
+          .then((data) => dispatch(setFav(data.fav)));
          
       }, []);
 }
-export const GetBasket = () =>{
+export const GetFav = () =>{
     const dispatch = useDispatch();
 
         const accessToken = localStorage.getItem("accessToken");
-        fetch(addBasketLink, {
+        fetch(FavLink, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -32,16 +32,16 @@ export const GetBasket = () =>{
           }
         })
           .then((res) => res.json())
-          .then((data) => dispatch(setBasket(data.basket)));
+          .then((data) => dispatch(setFav(data.fav)));
 
 }
 
 
-export const AddBasket = (product) =>{
+export const AddFav= (product) =>{
 
     
         const accessToken = localStorage.getItem("accessToken");
-        fetch(addBasketLink,{
+        fetch(FavLink,{
             method:"POST",
             headers:{"Content-Type":"application/json",
                 "Authorization": `Bearer ${accessToken}`,
@@ -49,14 +49,14 @@ export const AddBasket = (product) =>{
             body:JSON.stringify({product})
         }
         ).then((response)=> response.json())
-        .then((data)=>data.ok?alert("Sepete Eklendi"):<></>)
-        .catch((err)=>alert("Sepete Eklenemedi"));
+        .then((data)=>data.ok?alert("Favorilere Eklendi"):<></>)
+        .catch((err)=>alert("Favorilere Eklenemedi"));
 
 }
 
-export const RemoveFromBasket = (product) =>{
+export const RemoveFromFav = (product) =>{
     const accessToken = localStorage.getItem("accessToken");
-        fetch(addBasketLink,{
+        fetch(FavLink,{
             method:"DELETE",
             headers:{"Content-Type":"application/json",
                 "Authorization": `Bearer ${accessToken}`,
@@ -64,8 +64,8 @@ export const RemoveFromBasket = (product) =>{
             body:JSON.stringify({product})
         }
         ).then((response)=> response.json())
-        .then((data)=>data.ok?alert("Sepetten çıkarıldı"):<></>)
-        .catch((err)=>alert("Sepetten çıkarma işlemi başarısız"));
+        .then((data)=>data.ok?alert("Favorilere çıkarıldı"):<></>)
+        .catch((err)=>alert("Favorilerden çıkarma işlemi başarısız"));
         
 
 }

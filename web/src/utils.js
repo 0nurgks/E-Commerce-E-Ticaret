@@ -6,3 +6,4 @@ export const messageLink = "http://localhost:5000/message";
 export const getProductByCategoryLink = "http://localhost:5000/getProductByCategory";
 export const getProductByIdLink = "http://localhost:5000/getProductById";
 export const addBasketLink = "http://localhost:5000/basket"
+export const FavLink = "http://localhost:5000/fav"

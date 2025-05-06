@@ -4,7 +4,7 @@ import {getProductByCategoryLink} from "../utils";
 import { useEffect } from 'react';
 import { setProduct } from '../redux/productSlice.ts'; 
 import {setFilteredProduct} from '../redux/filteredProductSlice.ts';
-import { getProductByIdLink } from '../utils';
+
 export const useProduct= ()=>{
     const dispatch = useDispatch();
 
@@ -18,6 +18,7 @@ export const useProduct= ()=>{
             .catch((error) => console.error("Hata:", error));
         }, []);
 }
+
 
 
 export const useFilteredProducts = (value)=>{

@@ -4,14 +4,15 @@ import  ProductReducer  from './productSlice.ts'
 import filteredProductReducer from "./filteredProductSlice.ts"
 import clickedReducer from "./clickedSlice.ts"
 import basketSlice from "./basketSlice.ts"
-
+import favSlice from "./favSlice.ts"
 export const store = configureStore({
   reducer: {
     product:ProductReducer,
     category:CategoryReducer,
     filteredProduct:filteredProductReducer,
     clicked:clickedReducer,
-    basket:basketSlice
+    basket:basketSlice,
+    fav:favSlice,
   },
 })
 

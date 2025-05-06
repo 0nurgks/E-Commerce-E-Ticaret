@@ -12,4 +12,4 @@ const UserModel = new mongoose.Schema({
      lastViewed : [{type:mongoose.Schema.ObjectId , ref:"lastViewedModel"}]
 });
 
-mongoose.model("UserModel",UserModel, "Users");
+module.exports=mongoose.model("UserModel",UserModel, "Users");
