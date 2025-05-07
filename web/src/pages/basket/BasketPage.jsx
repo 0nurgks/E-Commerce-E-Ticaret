@@ -3,6 +3,7 @@ import { useGetBasket,GetBasket } from "../../fetch/BasketFetch";
 import { useSelector } from "react-redux";
 import {RemoveFromBasket} from "../../fetch/BasketFetch";
 import { useNavigate } from "react-router-dom";
+import TopNav from "../TopNav.jsx";
 const BasketPage = () => {
   useGetBasket(); // sepeti çeker
 
@@ -10,7 +11,8 @@ const BasketPage = () => {
 
  const nav = useNavigate();
   
-  return (
+  return (<div className="flex flex-1 flex-col">
+    <TopNav></TopNav>
     <div className="min-h-screen bg-gray-100 py-10 px-4">
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-xl p-6">
         <h2 className="text-2xl font-semibold mb-6 text-center">🛒 Sepetim</h2>
@@ -51,7 +53,7 @@ const BasketPage = () => {
         )}
       </div>
     </div>
-  );
-};
+    </div>);
+  };
 
 export default BasketPage;

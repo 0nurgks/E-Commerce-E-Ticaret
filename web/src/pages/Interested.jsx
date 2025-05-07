@@ -7,14 +7,17 @@ const Interested = () => {
     const navigate = useNavigate();
     useProduct();
     const datas = useSelector((state)=>state.product.value)
-  return (
-    <div>
-      {datas.slice(0,50).map((obj,index)=>(
-        <div key={index} >
-            <a className='!no-underline' href={`/product?query=${obj._id}`}>{obj?.name}</a>
+  return (<>
+  <p>TRENDLER</p>
+  <div className='flex flex-1 ml-5'>
+      {datas.slice(0,20).map((obj,index)=>(
+        <div key={index}  >
+            <a className='!no-underline mx-5' href={`/product?query=${obj._id}`}>{obj?.name}</a>
         </div>
       ))}
     </div>
+  </>
+    
   )
 }
 

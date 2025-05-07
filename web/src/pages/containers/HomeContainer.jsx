@@ -12,10 +12,10 @@ const HomeContainer = () => {
     <TopNav/>
     <div></div>
     <div className='container flex flex-col justify-end'> </div>
-    <div className='container '> <CategoryTab/></div>
-    <CardSlider></CardSlider>
-    <Interested></Interested>
-    <BotNav></BotNav>
+    <div className='container my-3'> <CategoryTab/></div>
+    <CardSlider className="flex my-5"></CardSlider>
+    <Interested className="flex mt-5"></Interested>
+    <BotNav className="flex mt-5"></BotNav>
     </div>
   )
 }

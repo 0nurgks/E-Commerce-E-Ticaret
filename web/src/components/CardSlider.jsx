@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
         const navigate = useNavigate();
       return (
         products[1]||products[2]||products[3]?
-        <div className='flex flex-1 justift-center items-center'>
+        <div className='flex flex-1 justift-center items-center my-5'>
         <Carousel data-bs-theme="dark" className='flex'>
           <Carousel.Item className='flex'>
             <img

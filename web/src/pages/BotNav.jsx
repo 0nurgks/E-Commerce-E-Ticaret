@@ -2,7 +2,7 @@ import React from 'react'
 
 const BotNav = () => {
   return (
-    <div className='flex flex-row items-end'>
+    <div className='flex flex-row items-end mt-5'>
       <p>
       Hakkımızda
 Müşteri memnuniyetini her şeyin önünde tutan bir anlayışla kurulan Deneme Ticaret, kaliteli ürünleri uygun fiyatlarla sizlerle buluşturmayı hedefleyen yenilikçi bir e-ticaret platformudur.

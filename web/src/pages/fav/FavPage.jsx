@@ -3,6 +3,7 @@ import { useGetFav,GetFav } from "../../fetch/FavFetch";
 import { useSelector } from "react-redux";
 import {RemoveFromFav} from "../../fetch/FavFetch";
 import { useNavigate } from "react-router-dom";
+import TopNav from "../TopNav.jsx";
 const FavPage = () => {
     useGetFav(); 
 
@@ -12,6 +13,8 @@ const FavPage = () => {
 
   
   return (
+    <div className="flex flex-1 flex-col">
+    <TopNav></TopNav>
     <div className="min-h-screen bg-gray-100 py-10 px-4">
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-xl p-6">
         <h2 className="text-2xl font-semibold mb-6 text-center">Favorilerim</h2>
@@ -52,7 +55,7 @@ const FavPage = () => {
         )}
       </div>
     </div>
-  );
+  </div>);
 };
 
 export default FavPage;
